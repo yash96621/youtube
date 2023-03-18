@@ -6,7 +6,6 @@ const Videos = require("../models/Videod");
 
 router.post("/addvideo", async (req, res) => {
   try {
-    await console.log(req.body);
     const video = new Videos({
       name: await req.body.names,
       link: await req.body.link,
@@ -61,5 +60,9 @@ router.delete("/deletevideo", async (req, res) => {
     });
   }
 });
+
+router.post('/searchVideo',async(req,res)=>{
+  
+})
 
 module.exports = router;

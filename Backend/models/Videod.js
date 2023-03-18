@@ -13,9 +13,16 @@ const videoSchema = new Schema({
   },
   description: {
     type: String,
+  },
+  type: {
+    type: String,
     required: true,
   },
-  link: {
+  video_link: {
+    type: String,
+    required: true,
+  },
+  thumbnail_link: {
     type: String,
     required: true,
   },
@@ -25,9 +32,15 @@ const videoSchema = new Schema({
   },
   views: {
     type: Number,
+    default: 0,
   },
   likes: {
     type: Number,
+    default: 0,
+  },
+  dislikes: {
+    type: Number,
+    default: 0,
   },
 });
 

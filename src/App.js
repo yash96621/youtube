@@ -3,15 +3,51 @@
 import Login from "./pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import VideoPlay from "./pages/VideoPlay";
+import Navbar from "./components/Navbar";
+import Upload from "./pages/Upload";
+import Sidebar from "./components/Siderbar";
+import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+
+import { useEffect, useState } from "react";
+import Library from "./pages/Library";
 
 function App() {
+  const data = useSelector((state) => {
+    return state.slice;
+  });
+
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        {/* <Route path="/link" element={<MemeAudio />} />  */}
-      </Routes>
+    <div className="min-h-screen bg-black ">
+      <Navbar />
+      <div
+        className={` flex flex-row pt-16 ${
+          data.video & data.side ? "space-x-6" : "space-x-0"
+        }  max-sm:space-x-0   rounded-xl `}
+      >
+        <div
+          className={` min-h-screen fixed bg-black  ${data.side ? "" : "hidden"} ${
+            data.video ? "" : " fixed  bg-black  "
+          } `}
+        >
+          <motion.aside
+            animate={{ x: data.side ? "0%" : "-100%" }}
+            transition={{ type: "tween", bounce: 0.2, duration: 0.3 }}
+          >
+            <Sidebar />
+          </motion.aside>
+        </div>
+        <div className="overflow-hidden ">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/Videoplay" element={<VideoPlay />} />
+            <Route path="/upload" element={<Upload />} />
+            <Route path="/library" element={<Library />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
