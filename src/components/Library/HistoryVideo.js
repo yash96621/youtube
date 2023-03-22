@@ -1,6 +1,6 @@
 import React from "react";
 import { FaHistory } from "react-icons/fa";
-import VideoTheme from "../components/VideoTheme";
+import VideoTheme from "../Main/VideoTheme";
 
 function HistoryVideo() {
   return (

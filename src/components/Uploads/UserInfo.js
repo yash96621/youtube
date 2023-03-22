@@ -27,7 +27,7 @@ function UserInfo() {
           </div>
           <div className="flex flex-col items-center justify-center">
             <p className="text-2xl font-bold text-navy-700 ">10$</p>
-            <p className="text-sm font-normal text-gray-600">Revenue</p>
+            <p className="text-sm font-normal text-gray-600">Add</p>
           </div>
         </div>
       </div>

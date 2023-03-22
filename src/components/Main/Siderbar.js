@@ -6,6 +6,7 @@ import VideoLibraryRoundedIcon from "@mui/icons-material/VideoLibraryRounded";
 import SubscriptionsSharpIcon from "@mui/icons-material/SubscriptionsSharp";
 import { Link } from "react-router-dom";
 import { FiUpload } from "react-icons/fi";
+import { RiVideoAddFill } from "react-icons/ri";
 
 function Siderbar() {
   return (
@@ -38,7 +39,13 @@ function Siderbar() {
         <Link to="/upload" className="flex flex-col mx-auto cursor-pointer">
           <FiUpload className="text-white mx-auto text-3xl" />
           <label htmlFor="Library" className="text-white text-xs">
-            Upload
+            Uploads
+          </label>
+        </Link>
+        <Link to="/addvideo" className="flex flex-col mx-auto cursor-pointer">
+          <RiVideoAddFill className="text-white mx-auto text-3xl" />
+          <label htmlFor="Library" className="text-white text-xs">
+            Add Video
           </label>
         </Link>
       </div>

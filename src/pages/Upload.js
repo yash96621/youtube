@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import UserInfo from "../components/UserInfo";
-import VideoTheme from "../components/VideoTheme";
+import UserInfo from "../components/Uploads/UserInfo";
+import VideoTheme from "../components/Main/VideoTheme";
 import { useDispatch } from "react-redux";
 import { hide, vid } from "../state/slices/slice";
 

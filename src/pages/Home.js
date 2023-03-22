@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import VideoTheme from "../components/VideoTheme";
+import VideoTheme from "../components/Main/VideoTheme";
 
-import Tag from "../components/Tag";
+import Tag from "../components/Main/Tag";
 import { useDispatch, useSelector } from "react-redux";
 import { hide, vid } from "../state/slices/slice";
 import { Link } from "react-router-dom";
@@ -23,7 +23,7 @@ function Home() {
   };
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-black min-h-screen ">
       <div className="flex flex-row space-x-6 max-sm:space-x-0  ">
         <div
           className={`  ${

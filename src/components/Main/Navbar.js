@@ -4,7 +4,7 @@ import MicIcon from "@mui/icons-material/Mic";
 
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { hide } from "../state/slices/slice";
+import { hide } from "../../state/slices/slice";
 import { HiMenu, HiOutlineSearch } from "react-icons/hi";
 import { BsBell, BsYoutube } from "react-icons/bs";
 import SearchSuggestion from "./SearchSuggestion";
@@ -37,7 +37,7 @@ function Navbar() {
     <>
       <div className="inline-flex  place-items-center bg-black w-screen justify-between fixed ">
         <div className="inline-flex">
-          <div className=" ml-7 hover:bg-slate-800 p-1 rounded-full  ">
+          <div className=" ml-4 md:ml-5 hover:bg-slate-800 p-2 rounded-full  ">
             <HiMenu className="text-white hover:cursor-pointer text-2xl " onClick={slid} />
           </div>
           <div className="flex ml-9 max-sm:ml-4 select-none place-items-center">

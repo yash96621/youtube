@@ -1,6 +1,6 @@
 import React from "react";
 import { BiLike } from "react-icons/bi";
-import VideoTheme from "../components/VideoTheme";
+import VideoTheme from "../Main/VideoTheme";
 
 function LikedVideo() {
   return (

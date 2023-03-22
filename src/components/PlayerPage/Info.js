@@ -12,7 +12,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 function Info() {
   return (
     <div>
-      <div className=" bg-slate-800  lg:rounded-2xl ">
+      <div className=" md:bg-slate-800  lg:rounded-2xl ">
         <div className="text-white p-2 text-xl">Video Name</div>
         <div className="grid grid-flow-col max-sm:grid-flow-row">
           <div className="flex  items-center mt-2 space-x-2 ">
@@ -46,20 +46,19 @@ function Info() {
             </div>
           </div>
 
-          <div className=" flex justify-end max-md:justify-center ">
+          <div className=" flex md:justify-end  overflow-x-scroll scrollbar-hide  ">
             <div className="flex place-items-center text-white space-x-1">
-              <div className="inline-flex  rounded-full bg-slate-900 max-md:bg-transparent   ">
-                <div className="flex flex-wrap justify-center  space-x-2 hover:cursor-pointer p-2 rounded-l-full max-md:bg-transparent   ">
+              <div className="inline-flex  rounded-full bg-slate-900    ">
+                <div className="flex md:flex-wrap justify-center  space-x-2 hover:cursor-pointer p-2 rounded-l-full    ">
                   <ThumbUpOutlinedIcon></ThumbUpOutlinedIcon>
-                  <div className="font-semibold max-md:font-medium max-md:pt-2">{4388}K</div>
+                  <div className="font-semibold max-md:font-medium ">{4388}K</div>
                 </div>
-
-                <div className="flex flex-wrap justify-center p-2 px-3 rounded-r-full    ">
+                <div className="flex md:flex-wrap justify-center p-2 px-3 rounded-r-full ">
                   <ThumbDownOffAltRoundedIcon></ThumbDownOffAltRoundedIcon>
                 </div>
               </div>
 
-              <div className=" bg-slate-900 max-md:bg-transparent gap-1 p-2 flex flex-wrap justify-center rounded-full">
+              <div className=" bg-slate-900  gap-1 p-2 flex md:flex-wrap justify-center rounded-full">
                 <ReplySharpIcon
                   className=" scale-x-[-1] max"
                   sx={{ fontSize: 25 }}
@@ -67,7 +66,7 @@ function Info() {
                 <p className="font-semibold my-auto max-md:font-medium ">Share</p>
               </div>
               <div>
-                <div className=" bg-slate-900 max-md:bg-transparent justify-center flex-wrap gap-1 p-1 px-3 flex rounded-full">
+                <div className=" bg-slate-900  justify-center md:flex-wrap gap-1 p-1 px-3 flex rounded-full">
                   <FileDownloadOutlinedIcon
                     className=" scale-x-[-1]"
                     sx={{ fontSize: 30 }}
