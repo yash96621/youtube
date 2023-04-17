@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import VideoPlay from "./pages/VideoPlay";
 import Navbar from "./components/Main/Navbar";
-import Upload from "./pages/Upload";
+import Upload from "./components/Uploads/Upload";
 import Sidebar from "./components/Main/Siderbar";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
@@ -44,7 +44,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Videoplay" element={<VideoPlay />} />
-            <Route path="/upload" element={<Upload />} />
+
             <Route path="/library" element={<Library />} />
             <Route path="/addvideo" element={<AddVideos />} />
           </Routes>

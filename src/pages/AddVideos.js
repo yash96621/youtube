@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UploadVideo from "../components/Uploads/UploadVideo";
+import Upload from "../components/Uploads/Upload";
 
 function AddVideos() {
   const data = useSelector((state) => {
@@ -8,7 +8,7 @@ function AddVideos() {
   });
   return (
     <div className={` ${data.slice.side ? "ml-20" : ""} pt-3`}>
-      <UploadVideo />
+      <Upload />
     </div>
   );
 }
