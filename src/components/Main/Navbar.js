@@ -8,6 +8,7 @@ import { hide } from "../../state/slices/slice";
 import { HiMenu, HiOutlineSearch } from "react-icons/hi";
 import { BsBell, BsYoutube } from "react-icons/bs";
 import SearchSuggestion from "./SearchSuggestion";
+import { HiOutlineUserCircle } from "react-icons/hi";
 
 function Navbar() {
   const [IsSearch, setIsSearch] = useState(false);
@@ -78,15 +79,12 @@ function Navbar() {
             />
           </div>
           <div className=" relative ">
-            <div className="absolute inline-flex items-center justify-center max-sm:w-4 max-sm:h-4 w-5 h-5 text-xs  text-white bg-red-700 rounded-full -top-0 -right-1 dark:border-gray-900">
+            <div className="absolute inline-flex items-center justify-center max-sm:w-4 max-sm:h-4 w-4 h-4 text-xs  text-white bg-red-700 rounded-full -top-0 -right-1 dark:border-gray-900">
               20
             </div>
-            <BsBell
-              className="text-white  max-sm:text-2xl text-3xl cursor-pointer"
-              sx={{ fontSize: 35 }}
-            />
+            <BsBell className="text-white  max-sm:text-2xl text-2xl cursor-pointer" />
           </div>
-          <div className=" h-10 bg-white w-10 max-sm:h-8  max-sm:w-8 rounded-full cursor-pointer"></div>
+          <HiOutlineUserCircle className="text-4xl text-blue-500 hover:cursor-pointer" />
         </div>
       </div>
     </>

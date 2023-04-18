@@ -12,6 +12,7 @@ function UserInfo() {
           />
           <div className=" -mt-10 h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-violet-500 dark:!border-navy-700 "></div>
         </div>
+
         <div className=" flex flex-col items-center">
           <h4 className="text-xl font-bold text-navy-700">name</h4>
           <h6 className=" text-sm text-gray-500 leading-3   ">email id</h6>
