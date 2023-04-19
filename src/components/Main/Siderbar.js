@@ -17,12 +17,7 @@ function Siderbar() {
             Home
           </label>
         </Link>
-        <Link to="/shorts" className="flex flex-col mx-auto cursor-pointer">
-          <LocalPlayOutlinedIcon className="text-white  mx-auto" sx={{ fontSize: 30 }} />
-          <label htmlFor="shorts" className="text-white text-xs">
-            Shorts
-          </label>
-        </Link>
+
         <Link to="/subscriptions" className="flex flex-col mx-auto cursor-pointer">
           <SubscriptionsSharpIcon className="text-white  mx-auto" sx={{ fontSize: 30 }} />
           <label htmlFor="Subscriptions" className="text-white text-xs">

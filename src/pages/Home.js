@@ -5,7 +5,6 @@ import Tag from "../components/Main/Tag";
 import { useDispatch, useSelector } from "react-redux";
 import { hide, vid } from "../state/slices/slice";
 import { Link } from "react-router-dom";
-import { sampThunk } from "../state/thunk/userThunk";
 
 function Home() {
   useEffect(() => {
@@ -18,17 +17,13 @@ function Home() {
     return state.slice;
   });
 
-  const helper = () => {
-    // dispatch{sampThunk({email,pass})}
-  };
-
   return (
     <div className="bg-black min-h-screen ">
       <div className="flex flex-row space-x-6 max-sm:space-x-0  ">
         <div
           className={`  ${
             data.side ? "max-sm:ml-0 ml-20 " : ""
-          } flex flex-col overflow-hidden  rounded-xl  overflow-y-scroll sm:p-3   place-content-center`}
+          } flex flex-col overflow-hidden duration-200  rounded-xl  overflow-y-scroll sm:p-3   place-content-center`}
         >
           <div className="  flex overflow-x-scroll scrollbar-hide space-x-3">
             {[

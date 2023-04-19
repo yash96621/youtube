@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import VideoPlay from "./pages/VideoPlay";
 import Navbar from "./components/Main/Navbar";
-import Upload from "./components/Uploads/Upload";
 import Sidebar from "./components/Main/Siderbar";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
@@ -13,6 +12,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Library from "./pages/Library";
 import AddVideos from "./pages/AddVideos";
+import Subscription from "./pages/Subscription";
 
 function App() {
   const data = useSelector((state) => {
@@ -28,7 +28,7 @@ function App() {
         }  max-sm:space-x-0   rounded-xl `}
       >
         <div
-          className={` min-h-screen fixed bg-black  ${data.side ? "" : "hidden"} ${
+          className={` min-h-screen  fixed  bg-black  ${data.side ? "" : "hidden"} ${
             data.video ? "" : " fixed  bg-black  "
           } `}
         >
@@ -44,9 +44,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Videoplay" element={<VideoPlay />} />
-
             <Route path="/library" element={<Library />} />
             <Route path="/addvideo" element={<AddVideos />} />
+            <Route path="/subscriptions" element={<Subscription />} />
           </Routes>
         </div>
       </div>
