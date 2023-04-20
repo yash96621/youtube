@@ -16,7 +16,7 @@ function Subscription() {
   return (
     <div
       className={`flex flex-col min-h-screen mt-4 ${
-        data.side ? "ml-20" : ""
+        data.side ? "md:ml-20" : ""
       } duration-300 divide-cyan-300`}
     >
       <Topview />
