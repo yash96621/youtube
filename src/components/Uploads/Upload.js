@@ -1,15 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-
-import { useDispatch } from "react-redux";
-import { hide, vid } from "../../state/slices/slice";
+import React, { useRef } from "react";
 
 function Upload() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(hide(false));
-    dispatch(vid(false));
-  }, []);
   const fileRef = useRef(null);
   const handleVideoUpload = (file) => {
     if (!file.type.includes("video")) {
@@ -20,9 +11,6 @@ function Upload() {
     }
   };
 
-  const data = useSelector((state) => {
-    return state.slice;
-  });
   return (
     <div className="mx-auto w-full h-fit  max-w-[550px] bg-white rounded-2xl">
       <form className="py-6 px-9">
@@ -69,7 +57,6 @@ function Upload() {
           </div>
 
           <div className=" rounded-md bg-[#F5F7FB] py-4 px-8">
-            {}
             <div className="relative mt-5 h-[6px] w-full rounded-lg bg-[#E2E5EF]">
               <div className="absolute left-0 right-0 h-full w-[75%] rounded-lg bg-blue-500 "></div>
             </div>

@@ -7,8 +7,8 @@ function Topview() {
       <div className="flex w-screen   md:justify-center  overflow-x-scroll   scrollbar-hide">
         <div
           className={`flex ${
-            showall ? "flex-col max-md:w-screen w-[900px]" : ""
-          } max-md:w-screen max-w-[900px] duration-1000 border max-sm:border-black border-white overflow-x-scroll scrollbar-hide p-2 rounded-2xl gap-x-3`}
+            showall ? "flex-col max-md:w-screen w-[900px] gap-y-3 " : ""
+          } max-md:w-screen max-w-[900px] duration-1000 border-2 border-gray-700  max-sm:border-black  overflow-x-scroll scrollbar-hide p-2 rounded-2xl gap-x-3`}
         >
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map(() => (
             <div className={`${showall ? "flex justify-between " : ""}`}>

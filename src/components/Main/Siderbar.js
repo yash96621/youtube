@@ -10,7 +10,7 @@ import { RiVideoAddFill } from "react-icons/ri";
 function Siderbar() {
   return (
     <>
-      <div className=" flex flex-col gap-y-10 cursor-pointer  ">
+      <div className=" flex flex-col max-sm:w-screen max-sm:flex-row gap-y-10 cursor-pointer  ">
         <Link to="/" className="flex flex-col  mx-auto text-center">
           <HomeIcon className="text-white" sx={{ fontSize: 30 }} />
           <label htmlFor="home" className="text-white text-xs ">
@@ -28,6 +28,13 @@ function Siderbar() {
           <VideoLibraryRoundedIcon className="text-white  mx-auto" sx={{ fontSize: 30 }} />
           <label htmlFor="Library" className="text-white text-xs">
             Library
+          </label>
+        </Link>
+
+        <Link to="/uploads" className="flex flex-col mx-auto cursor-pointer">
+          <FiUpload className="text-white  mx-auto text-3xl" />
+          <label htmlFor="Uploads" className="text-white text-xs">
+            Uploads
           </label>
         </Link>
 

@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import Library from "./pages/Library";
 import AddVideos from "./pages/AddVideos";
 import Subscription from "./pages/Subscription";
+import Uploads from "./pages/Uploads";
 
 function App() {
   const data = useSelector((state) => {
@@ -20,7 +21,7 @@ function App() {
   });
 
   return (
-    <div className="min-h-screen bg-black ">
+    <div className="min-h-screen w-screen bg-black ">
       <Navbar />
       <div
         className={` flex flex-row pt-16  ${
@@ -28,9 +29,9 @@ function App() {
         }  max-sm:space-x-0   rounded-xl `}
       >
         <div
-          className={` min-h-screen  fixed  bg-black  ${data.side ? "" : "hidden"} ${
-            data.video ? "" : " fixed  bg-black  "
-          } `}
+          className={` min-h-screen max-sm:top-[90%] max-sm:py-2  fixed  bg-black  ${
+            data.side ? "" : "hidden"
+          } ${data.video ? "" : " fixed  bg-black  "} `}
         >
           <motion.aside
             animate={{ x: data.side ? "0%" : "-100%" }}
@@ -47,6 +48,7 @@ function App() {
             <Route path="/library" element={<Library />} />
             <Route path="/addvideo" element={<AddVideos />} />
             <Route path="/subscriptions" element={<Subscription />} />
+            <Route path="/uploads" element={<Uploads />} />
           </Routes>
         </div>
       </div>

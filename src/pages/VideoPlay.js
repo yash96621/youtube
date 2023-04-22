@@ -17,7 +17,7 @@ function VideoPlay() {
   return (
     <div className="bg-black min-h-screen w-screen  ">
       <div className=" grid grid-flow-row xl:grid-flow-col max-xl:grid-flow-col max-lg:grid-flow-row overflow-x-scroll ">
-        <div className=" lg:p-3 flex flex-col md:gap-y-7   md:bg-slate-900  ">
+        <div className=" lg:p-3 flex flex-col md:gap-y-7 h-fit md:bg-slate-900  ">
           <div className=" aspect-[16/9]">
             <ReactPlayer
               width="100%"
@@ -29,7 +29,7 @@ function VideoPlay() {
           <Info />
           <Comments />
         </div>
-        <div className=" min-w-max flex  flex-col gap-y-3 justify-items-center  h-screen overflow-y-scroll scrollbar-hide">
+        <div className=" min-w-max flex p-2  flex-col gap-y-3 justify-items-center  h-screen scrollbar-hide">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
             <VideoTheme side={side} />
           ))}

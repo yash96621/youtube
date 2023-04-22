@@ -48,8 +48,10 @@ function Navbar() {
             </h1>
           </div>
         </div>
+
         <div className=" inline-flex mx-auto max-md:hidden">
-          <div className="flex flex-col justify-center item-center">
+          <div className="">{IsSearch ? <SearchSuggestion search={search} /> : ""}</div>
+          <div className="flex flex-col justify-center item-center ">
             <input
               type="text"
               name="search"
@@ -58,7 +60,6 @@ function Navbar() {
               onChange={changes}
               className=" bg-black rounded-l-full text-white w-[550px] max-lg:w-[300px] "
             ></input>
-            {IsSearch ? <SearchSuggestion search={search} /> : ""}
           </div>
           <div className="bg-slate-900 rounded-r-full p-1.5 px-3">
             <SearchIcon
@@ -71,6 +72,7 @@ function Navbar() {
             <MicIcon sx={{ fontSize: 30 }} className="text-white cursor-pointer"></MicIcon>
           </div>
         </div>
+
         <div className="inline-flex place-items-center py-3  space-x-5 max-sm:space-x-3  ">
           <div className=" -mr-1   lg:hidden xl:hidden 2xl:hidden md:hidden    ">
             <HiOutlineSearch
