@@ -10,7 +10,7 @@ import { RiVideoAddFill } from "react-icons/ri";
 function Siderbar() {
   return (
     <>
-      <div className=" flex flex-col max-sm:w-screen max-sm:flex-row gap-y-10 cursor-pointer  ">
+      <div className=" flex flex-col max-sm:w-screen  max-sm:flex-row gap-y-10 cursor-pointer  select-none  ">
         <Link to="/" className="flex flex-col  mx-auto text-center">
           <HomeIcon className="text-white" sx={{ fontSize: 30 }} />
           <label htmlFor="home" className="text-white text-xs ">

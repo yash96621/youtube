@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import MicIcon from "@mui/icons-material/Mic";
-
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { hide } from "../../state/slices/slice";
@@ -9,6 +7,8 @@ import { HiMenu, HiOutlineSearch } from "react-icons/hi";
 import { BsBell, BsYoutube } from "react-icons/bs";
 import SearchSuggestion from "./SearchSuggestion";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import { IoMdMic } from "react-icons/io";
+import BellSuggestion from "./BellSuggestion";
 
 function Navbar() {
   const [IsSearch, setIsSearch] = useState(false);
@@ -25,6 +25,8 @@ function Navbar() {
   const data = useSelector((state) => {
     return state.slice.side;
   });
+
+  const [bellicon, setbellicon] = useState(false);
 
   const slid = () => {
     if (data === true) {
@@ -68,8 +70,8 @@ function Navbar() {
             />
           </div>
 
-          <div className="bg bg-slate-800 rounded-full ml-2  p-1.5">
-            <MicIcon sx={{ fontSize: 30 }} className="text-white cursor-pointer"></MicIcon>
+          <div className="bg bg-slate-800 rounded-full ml-2  p-2">
+            <IoMdMic sx={{ fontSize: 30 }} className="text-white cursor-pointer text-2xl"></IoMdMic>
           </div>
         </div>
 
@@ -80,15 +82,21 @@ function Navbar() {
               className="text-white  max-md:text-2xl text-5xl hover:cursor-pointer  "
             />
           </div>
-          <div className=" relative ">
+          <div
+            className=" relative cursor-pointer select-none"
+            onClick={() => {
+              setbellicon(!bellicon);
+            }}
+          >
             <div className="absolute inline-flex items-center justify-center max-sm:w-4 max-sm:h-4 w-4 h-4 text-xs  text-white bg-red-700 rounded-full -top-0 -right-1 dark:border-gray-900">
               20
             </div>
-            <BsBell className="text-white  max-sm:text-2xl text-2xl cursor-pointer" />
+            <BsBell className="text-white  max-sm:text-2xl text-2xl " />
           </div>
-          <HiOutlineUserCircle className="text-4xl text-blue-500 hover:cursor-pointer" />
+          <HiOutlineUserCircle className="text-4xl text-blue-500 " />
         </div>
       </div>
+      {<div className="">{bellicon ? <BellSuggestion /> : ""}</div>}
     </>
   );
 }
