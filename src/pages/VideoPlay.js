@@ -13,7 +13,6 @@ function VideoPlay() {
     dispatch(vid(false));
   }, []);
 
-  const [side, setside] = useState(true);
   return (
     <div className="bg-black min-h-screen w-screen  ">
       <div className=" grid grid-flow-row xl:grid-flow-col max-xl:grid-flow-col max-lg:grid-flow-row overflow-x-scroll ">
@@ -29,9 +28,9 @@ function VideoPlay() {
           <Info />
           <Comments />
         </div>
-        <div className=" min-w-max flex p-2  flex-col gap-y-3 justify-items-center  h-screen scrollbar-hide">
+        <div className=" min-w-max flex p-2   flex-col gap-y-3 justify-items-center  min-h-screen scrollbar-hide">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-            <VideoTheme side={side} />
+            <VideoTheme side={true} />
           ))}
         </div>
       </div>

@@ -75,7 +75,7 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="inline-flex place-items-center py-3  space-x-5 max-sm:space-x-3  ">
+        <div className="inline-flex place-items-center py-3 mx-2  space-x-5 max-sm:space-x-3  ">
           <div className=" -mr-1   lg:hidden xl:hidden 2xl:hidden md:hidden    ">
             <HiOutlineSearch
               onClick={changes}
