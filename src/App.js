@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import VideoPlay from "./pages/VideoPlay";
 import Navbar from "./components/Main/Navbar";
 import Sidebar from "./components/Main/Siderbar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
 import { useEffect, useState } from "react";
@@ -14,20 +14,28 @@ import Library from "./pages/Library";
 import AddVideos from "./pages/AddVideos";
 import Subscription from "./pages/Subscription";
 import Uploads from "./pages/Uploads";
+import ModePage from "./components/Library/ModePage";
 
 function App() {
   const data = useSelector((state) => {
     return state.slice;
   });
 
+  const { loginshow } = useSelector((state) => {
+    return state.data;
+  });
+
+  const dispatch = useDispatch();
+
   return (
     <div className="min-h-screen w-screen bg-black ">
       <Navbar />
       <div
-        className={` flex flex-row pt-16  ${
+        className={` flex flex-row pt-16 max-sm:pt-20  ${
           data.video & data.side ? "space-x-6" : "space-x-0"
         }  max-sm:space-x-0   rounded-xl `}
       >
+        {loginshow ? <Login /> : []}
         <div
           className={` min-h-screen max-sm:top-[90%] max-sm:py-2  fixed  bg-black  ${
             data.side ? "" : "hidden"
@@ -49,6 +57,7 @@ function App() {
             <Route path="/addvideo" element={<AddVideos />} />
             <Route path="/subscriptions" element={<Subscription />} />
             <Route path="/uploads" element={<Uploads />} />
+            <Route path="/modepage" element={<ModePage />} />
           </Routes>
         </div>
       </div>

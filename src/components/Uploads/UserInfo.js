@@ -5,14 +5,9 @@ function UserInfo() {
     <div>
       <div className=" flex flex-col items-center rounded-[20px] max-w-[400px] mx-auto p-4 bg-white bg-clip-border shadow-3xl shadow-shadow-500 select-none   ">
         <div className=" flex flex-col items-center w-full justify-center rounded-xl bg-cover">
-          <img
-            src="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png"
-            className=" flex h-32 w-full justify-center rounded-xl bg-cover"
-            loading="lazy"
-          />
-          <div className=" -mt-10 h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-violet-500 dark:!border-navy-700 "></div>
+          <div className=" flex h-32 w-full justify-center rounded-xl bg-gradient-to-t from-sky-500  " />
+          <div className=" -mt-10 h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white  bg-orange-500  "></div>
         </div>
-
         <div className=" flex flex-col items-center">
           <h4 className="text-xl font-bold text-navy-700">name</h4>
           <h6 className=" text-sm text-gray-500 leading-3   ">email id</h6>

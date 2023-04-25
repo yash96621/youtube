@@ -9,24 +9,34 @@ import SearchSuggestion from "./SearchSuggestion";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoMdMic } from "react-icons/io";
 import BellSuggestion from "./BellSuggestion";
+import { setloginshow } from "../../state/slices/data";
+import LoginSuggestion from "./LoginSuggestion";
 
 function Navbar() {
   const [IsSearch, setIsSearch] = useState(false);
+  const [bellicon, setbellicon] = useState(false);
   const [search, setsearch] = useState("");
+  const [login, setlogin] = useState(false);
+
   const changes = (e) => {
     setsearch(e.target.value);
     if (e.target.value === "") {
       setIsSearch(false);
     } else {
       setIsSearch(true);
+      setbellicon(false);
+      setlogin(false);
     }
   };
   const dispatch = useDispatch();
   const data = useSelector((state) => {
     return state.slice.side;
   });
-
-  const [bellicon, setbellicon] = useState(false);
+  const { isconnected, user } = useSelector((state) => {
+    return state.data;
+  });
+  console.log(user);
+  console.log(isconnected);
 
   const slid = () => {
     if (data === true) {
@@ -75,7 +85,7 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="inline-flex place-items-center py-3 mx-2  space-x-5 max-sm:space-x-3  ">
+        <div className="inline-flex place-items-center py-3 mx-2 md:pr-5  space-x-5 max-sm:space-x-3  ">
           <div className=" -mr-1   lg:hidden xl:hidden 2xl:hidden md:hidden    ">
             <HiOutlineSearch
               onClick={changes}
@@ -86,6 +96,7 @@ function Navbar() {
             className=" relative cursor-pointer select-none"
             onClick={() => {
               setbellicon(!bellicon);
+              setIsSearch(false);
             }}
           >
             <div className="absolute inline-flex items-center justify-center max-sm:w-4 max-sm:h-4 w-4 h-4 text-xs  text-white bg-red-700 rounded-full -top-0 -right-1 dark:border-gray-900">
@@ -93,9 +104,29 @@ function Navbar() {
             </div>
             <BsBell className="text-white  max-sm:text-2xl text-2xl " />
           </div>
-          <HiOutlineUserCircle className="text-4xl text-blue-500 " />
+          {isconnected ? (
+            <div
+              onClick={() => {
+                setlogin(!login);
+              }}
+              className=" cursor-pointer"
+            >
+              <img src={user.picture} className="rounded-full w-9 h-9" />
+            </div>
+          ) : (
+            <HiOutlineUserCircle
+              onClick={() => {
+                dispatch(setloginshow(true));
+                dispatch(hide(false));
+                setbellicon(false);
+                setIsSearch(false);
+              }}
+              className="text-4xl text-blue-500 hover:cursor-pointer "
+            />
+          )}
         </div>
       </div>
+      {<div className="">{login ? <LoginSuggestion /> : ""}</div>}
       {<div className="">{bellicon ? <BellSuggestion /> : ""}</div>}
     </>
   );

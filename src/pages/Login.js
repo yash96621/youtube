@@ -1,9 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { setconnection, setloginshow, setuserdata } from "../state/slices/data";
+import { useDispatch } from "react-redux";
+import jwtDecode from "jwt-decode";
 
 function Login() {
+  const handlecallback = async (res) => {
+    console.log("JWT encoded Toekn", res.credential);
+    var userData = await jwtDecode(res.credential);
+    console.log(userData);
+    dispatch(setuserdata(userData));
+    dispatch(setconnection(true));
+    dispatch(setloginshow(false));
+  };
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "22944664305-3ofj0bn1smqi7nrn17ejj4d1nc3v3jn2.apps.googleusercontent.com",
+      callback: handlecallback,
+    });
+    google.accounts.id.renderButton(document.getElementById("login"), {
+      theme: "outline",
+      size: "large",
+    });
+  }, []);
+  const dispatch = useDispatch();
+
   return (
-    <div className=" bg-gradient-to-r from-black to-blue-900 justify-center min-h-screen ">
-      <div className="shadow-2xl  bg-transparent  border-white  overflow-hidden rounded-lg bg-opacity-100 border  "></div>
+    <div className=" fixed h-screen -top-24 flex items-center justify-center  w-full  px-2 ">
+      <div className="bg-white  shadow    rounded lg:w-1/3 h-60  md:w-1/2 w-full p-10 mt-16 overflow-hidden ">
+        <div className="w-full justify-end flex -mt-12 ml-10">
+          <button
+            onClick={() => {
+              dispatch(setloginshow(false));
+            }}
+            className="bg-red-500 text-white text-lg    p-3  text-center rounded-bl-2xl"
+          >
+            x
+          </button>
+        </div>
+
+        <div className="flex gap-y-4 flex-col">
+          <p
+            role="heading"
+            aria-label="Login to your account"
+            className="text-2xl select-none max-sm:text-lg font-extrabold leading-6 text-gray-800"
+          >
+            Login to your account
+          </p>
+
+          <div id="login"></div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -20,9 +20,6 @@ const slice = createSlice({
     vid: (state, actions) => {
       state.video = actions.payload;
     },
-    custom: (state, { payload }) => {
-      state.counter = state.counter + payload;
-    },
   },
   extraReducers: (builder) => {
     // builder.addCase(sampThunk.pending, (state, actions) => {
@@ -42,5 +39,5 @@ const slice = createSlice({
   },
 });
 
-export const { custom, hide, vid } = slice.actions;
+export const { hide, vid } = slice.actions;
 export default slice.reducer;
