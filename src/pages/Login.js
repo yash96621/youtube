@@ -1,28 +1,46 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { setconnection, setloginshow, setuserdata } from "../state/slices/data";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
+import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleOneTapLogin } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
+// import axios from "axios";
 
 function Login() {
-  const handlecallback = async (res) => {
-    console.log("JWT encoded Toekn", res.credential);
-    var userData = await jwtDecode(res.credential);
-    console.log(userData);
-    dispatch(setuserdata(userData));
-    dispatch(setconnection(true));
-    dispatch(setloginshow(false));
-  };
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: "22944664305-3ofj0bn1smqi7nrn17ejj4d1nc3v3jn2.apps.googleusercontent.com",
-      callback: handlecallback,
-    });
-    google.accounts.id.renderButton(document.getElementById("login"), {
-      theme: "outline",
-      size: "large",
-    });
-  }, []);
+  // const handlecallback = async (res) => {
+  //   console.log("JWT encoded Toekn", res.credential);
+  //   var userData = await jwtDecode(res.credential);
+  //   console.log(userData);
+  //   dispatch(setuserdata(userData));
+  //   dispatch(setconnection(true));
+  //   dispatch(setloginshow(false));
+  // };
+  // useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id: "22944664305-3ofj0bn1smqi7nrn17ejj4d1nc3v3jn2.apps.googleusercontent.com",
+  //     callback: handlecallback,
+  //   });
+  //   google.accounts.id.renderButton(document.getElementById("login"), {
+  //     theme: "outline",
+  //     size: "large",
+  //   });
+  // }, []);
+
+  // const login = useGoogleLogin({
+  //   onSuccess: async (tokenResponse) => {
+  //     const data = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+  //       headers: {
+  //         Authorization: `Bearer ${tokenResponse.access_token}`,
+  //       },
+  //     });
+  //     console.log(data);
+  //     dispatch(setuserdata(data));
+  //     dispatch(setconnection(true));
+  //     dispatch(setloginshow(false));
+  //   },
+  // });
   const dispatch = useDispatch();
 
   return (
@@ -47,8 +65,22 @@ function Login() {
           >
             Login to your account
           </p>
-
-          <div id="login"></div>
+          {/* <div id="login"></div>
+          <button onClick={() => login()}>Login</button> */}
+          <GoogleLogin
+            auto_select={true}
+            onSuccess={async (res) => {
+              var userData = await jwtDecode(res.credential);
+              console.log(userData);
+              dispatch(setuserdata(userData));
+              dispatch(setconnection(true));
+              dispatch(setloginshow(false));
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+            useOneTap
+          />
         </div>
       </div>
     </div>

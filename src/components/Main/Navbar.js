@@ -35,8 +35,6 @@ function Navbar() {
   const { isconnected, user } = useSelector((state) => {
     return state.data;
   });
-  console.log(user);
-  console.log(isconnected);
 
   const slid = () => {
     if (data === true) {
@@ -97,6 +95,7 @@ function Navbar() {
             onClick={() => {
               setbellicon(!bellicon);
               setIsSearch(false);
+              setlogin(false);
             }}
           >
             <div className="absolute inline-flex items-center justify-center max-sm:w-4 max-sm:h-4 w-4 h-4 text-xs  text-white bg-red-700 rounded-full -top-0 -right-1 dark:border-gray-900">
@@ -108,6 +107,8 @@ function Navbar() {
             <div
               onClick={() => {
                 setlogin(!login);
+                setbellicon(false);
+                setIsSearch(false);
               }}
               className=" cursor-pointer"
             >

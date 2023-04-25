@@ -27,16 +27,18 @@ function Home() {
         >
           <div className="  flex overflow-x-scroll scrollbar-hide space-x-3">
             {[
-              1, 2, 10, 12, 12, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 1, 1,
-              1, 1, 1, 1, 1, 3, 4, 5, 6, 7, 8,
+              1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+              25, 26, 27, 28, 29, 30, 31, 32,
             ].map((item) => (
-              <Tag props={item} />
+              <Tag props={item} key={item} />
             ))}
           </div>
 
           <div className="  pt-4 gap-3 grid xl:grid-cols-4 sm:grid-cols-2   max-sm:grid-none max-sm:w-[100%]  lg:grid-cols-3 ">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <Link to="/videoplay">
+            {[
+              1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            ].map((item) => (
+              <Link to="/videoplay" key={item}>
                 <VideoTheme />
               </Link>
             ))}
