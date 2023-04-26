@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { hide } from "../../state/slices/slice";
+import { hide, setsearchshow } from "../../state/slices/slice";
 import { HiMenu, HiOutlineSearch } from "react-icons/hi";
 import { BsBell, BsYoutube } from "react-icons/bs";
 import SearchSuggestion from "./SearchSuggestion";
@@ -12,6 +12,8 @@ import BellSuggestion from "./BellSuggestion";
 import { setloginshow, setdashboard } from "../../state/slices/data";
 import DashSuggestion from "./DashSuggestion";
 import { LoginWithGoogle } from "../../state/thunk/TubeThunk";
+import NativSearch from "./NativSearch";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   useEffect(() => {
@@ -23,6 +25,7 @@ function Navbar() {
   }, []);
 
   const [IsSearch, setIsSearch] = useState(false);
+
   const [bellicon, setbellicon] = useState(false);
   const [search, setsearch] = useState("");
 
@@ -37,15 +40,15 @@ function Navbar() {
     }
   };
   const dispatch = useDispatch();
-  const data = useSelector((state) => {
-    return state.slice.side;
+  const { side, searchshow } = useSelector((state) => {
+    return state.slice;
   });
   const { isconnected, Googleuser, dashshow } = useSelector((state) => {
     return state.data;
   });
 
   const slid = () => {
-    if (data === true) {
+    if (side === true) {
       dispatch(hide(false));
     } else {
       dispatch(hide(true));
@@ -71,7 +74,7 @@ function Navbar() {
           <div className="">{IsSearch ? <SearchSuggestion search={search} /> : ""}</div>
           <div className="flex flex-col justify-center item-center ">
             <input
-              type="text"
+              type="search"
               name="search"
               placeholder="search"
               value={search}
@@ -92,9 +95,13 @@ function Navbar() {
         </div>
 
         <div className="inline-flex place-items-center py-3 mx-2 md:pr-5  space-x-5 max-sm:space-x-3  ">
-          <div className=" -mr-1   lg:hidden xl:hidden 2xl:hidden md:hidden    ">
+          <div className=" -mr-1   md:hidden   ">
             <HiOutlineSearch
-              onClick={changes}
+              onClick={() => {
+                dispatch(setsearchshow(true));
+                dispatch(setdashboard(false));
+                setbellicon(false);
+              }}
               className="text-white  max-md:text-2xl text-5xl hover:cursor-pointer  "
             />
           </div>
@@ -139,6 +146,7 @@ function Navbar() {
           )}
         </div>
       </div>
+
       {<div className="">{dashshow ? <DashSuggestion /> : ""}</div>}
       {<div className="">{bellicon ? <BellSuggestion /> : ""}</div>}
     </>

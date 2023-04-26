@@ -15,6 +15,7 @@ import AddVideos from "./pages/AddVideos";
 import Subscription from "./pages/Subscription";
 import Uploads from "./pages/Uploads";
 import ModePage from "./components/Library/ModePage";
+import NativSearch from "./components/Main/NativSearch";
 
 function App() {
   const data = useSelector((state) => {
@@ -30,6 +31,7 @@ function App() {
   return (
     <div className="min-h-screen w-screen bg-black ">
       <Navbar />
+      {<div className="">{data.searchshow ? <NativSearch /> : []}</div>}
       <div
         className={` flex flex-row pt-16 max-sm:pt-20  ${
           data.video & data.side ? "space-x-6" : "space-x-0"
@@ -58,6 +60,7 @@ function App() {
             <Route path="/subscriptions" element={<Subscription />} />
             <Route path="/uploads" element={<Uploads />} />
             <Route path="/modepage" element={<ModePage />} />
+            <Route path="/nativsearch" element={<NativSearch />} />
           </Routes>
         </div>
       </div>
