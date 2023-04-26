@@ -15,7 +15,7 @@ function Upload() {
     <div className="mx-auto w-full h-fit  max-w-[550px] bg-white rounded-2xl">
       <form className="py-6 px-9">
         <div className="mb-5">
-          <label hmlFor="text" className="mb-3 block text-base font-medium text-[#07074D]">
+          <label htmlFor="text" className="mb-3 block text-base font-medium text-[#07074D]">
             Video name
           </label>
           <input
@@ -43,7 +43,7 @@ function Upload() {
               onChange={(event) => handleVideoUpload(event.target.files[0])}
             />
             <label
-              hmlFor="file"
+              htmlFor="file"
               className=" flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
             >
               <div>

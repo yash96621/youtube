@@ -25,8 +25,8 @@ function SubVideo() {
           } flex flex-col overflow-hidden duration-200 w-screen  rounded-xl  overflow-y-scroll sm:p-3   place-content-center`}
         >
           <div className="  pt-4 gap-3 grid xl:grid-cols-4 sm:grid-cols-2   max-sm:grid-none max-sm:w-[100%]  lg:grid-cols-3 ">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <Link to="/videoplay">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10, 21, 32, 43, 53, 62, 71, 82].map((item) => (
+              <Link key={item} to="/videoplay">
                 <VideoTheme />
               </Link>
             ))}

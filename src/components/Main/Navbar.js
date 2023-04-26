@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,14 +9,22 @@ import SearchSuggestion from "./SearchSuggestion";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { IoMdMic } from "react-icons/io";
 import BellSuggestion from "./BellSuggestion";
-import { setloginshow } from "../../state/slices/data";
-import LoginSuggestion from "./LoginSuggestion";
+import { setloginshow, setdashboard } from "../../state/slices/data";
+import DashSuggestion from "./DashSuggestion";
+import { LoginWithGoogle } from "../../state/thunk/TubeThunk";
 
 function Navbar() {
+  useEffect(() => {
+    if (sessionStorage.getItem("googleuser")) {
+      const token = sessionStorage.getItem("googleuser");
+      console.log(token);
+      dispatch(LoginWithGoogle({ token }));
+    }
+  }, []);
+
   const [IsSearch, setIsSearch] = useState(false);
   const [bellicon, setbellicon] = useState(false);
   const [search, setsearch] = useState("");
-  const [login, setlogin] = useState(false);
 
   const changes = (e) => {
     setsearch(e.target.value);
@@ -25,14 +33,14 @@ function Navbar() {
     } else {
       setIsSearch(true);
       setbellicon(false);
-      setlogin(false);
+      dispatch(setdashboard(false));
     }
   };
   const dispatch = useDispatch();
   const data = useSelector((state) => {
     return state.slice.side;
   });
-  const { isconnected, user } = useSelector((state) => {
+  const { isconnected, Googleuser, dashshow } = useSelector((state) => {
     return state.data;
   });
 
@@ -90,30 +98,34 @@ function Navbar() {
               className="text-white  max-md:text-2xl text-5xl hover:cursor-pointer  "
             />
           </div>
-          <div
-            className=" relative cursor-pointer select-none"
-            onClick={() => {
-              setbellicon(!bellicon);
-              setIsSearch(false);
-              setlogin(false);
-            }}
-          >
-            <div className="absolute inline-flex items-center justify-center max-sm:w-4 max-sm:h-4 w-4 h-4 text-xs  text-white bg-red-700 rounded-full -top-0 -right-1 dark:border-gray-900">
-              20
-            </div>
-            <BsBell className="text-white  max-sm:text-2xl text-2xl " />
-          </div>
+
           {isconnected ? (
-            <div
-              onClick={() => {
-                setlogin(!login);
-                setbellicon(false);
-                setIsSearch(false);
-              }}
-              className=" cursor-pointer"
-            >
-              <img src={user.picture} className="rounded-full w-9 h-9" />
-            </div>
+            <>
+              <div
+                className=" relative cursor-pointer select-none"
+                onClick={() => {
+                  setbellicon(!bellicon);
+                  setIsSearch(false);
+                  dispatch(setdashboard(false));
+                }}
+              >
+                <div className="absolute inline-flex items-center justify-center max-sm:w-4 max-sm:h-4 w-4 h-4 text-xs  text-white bg-red-700 rounded-full -top-0 -right-1 dark:border-gray-900">
+                  20
+                </div>
+                <BsBell className="text-white  max-sm:text-2xl text-2xl " />
+              </div>
+
+              <div
+                onClick={() => {
+                  dispatch(setdashboard(!dashshow));
+                  setbellicon(false);
+                  setIsSearch(false);
+                }}
+                className=" cursor-pointer"
+              >
+                <img src={Googleuser.picture} className="rounded-full w-9 h-9" />
+              </div>
+            </>
           ) : (
             <HiOutlineUserCircle
               onClick={() => {
@@ -127,7 +139,7 @@ function Navbar() {
           )}
         </div>
       </div>
-      {<div className="">{login ? <LoginSuggestion /> : ""}</div>}
+      {<div className="">{dashshow ? <DashSuggestion /> : ""}</div>}
       {<div className="">{bellicon ? <BellSuggestion /> : ""}</div>}
     </>
   );
