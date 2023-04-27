@@ -15,12 +15,16 @@ function NativSearch() {
             }}
             className="text-white text-3xl"
           />
-          <input
-            type="search"
-            name="search"
-            placeholder="search"
-            className=" bg-gray-800 rounded-full text-white w-[550px] max-lg:w-[300px] "
-          ></input>
+          <div>
+            <input
+              type="search"
+              name="search"
+              placeholder="search"
+              className=" bg-gray-800 rounded-full text-white w-[550px] max-lg:w-[300px] "
+            ></input>
+
+            <SearchSuggestion />
+          </div>
           <div className="bg bg-slate-900 rounded-full ml-2  p-2">
             <IoMdMic
               sx={{ fontSize: 30 }}
@@ -28,7 +32,6 @@ function NativSearch() {
             ></IoMdMic>
           </div>
         </div>
-        <SearchSuggestion />
       </div>
     </div>
   );

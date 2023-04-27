@@ -1,16 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function UserInfo() {
+  const data = useSelector((state) => {
+    return state.data;
+  });
   return (
     <div>
       <div className=" flex flex-col items-center rounded-[20px] max-w-[400px] mx-auto p-4 bg-white bg-clip-border shadow-3xl shadow-shadow-500 select-none   ">
         <div className=" flex flex-col items-center w-full justify-center rounded-xl bg-cover">
-          <div className=" flex h-32 w-full justify-center rounded-xl bg-gradient-to-t from-sky-500  " />
-          <div className=" -mt-10 h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white  bg-orange-500  "></div>
+          <div className=" flex h-32 w-full justify-center rounded-xl bg-gradient-to-l from-teal-500 via-cyan-500 to-sky-600  " />
+          <img
+            src={data.Googleuser.picture}
+            className=" -mt-10 h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white   "
+          />
         </div>
         <div className=" flex flex-col items-center">
-          <h4 className="text-xl font-bold text-navy-700">name</h4>
-          <h6 className=" text-sm text-gray-500 leading-3   ">email id</h6>
+          <h4 className="text-xl font-bold text-navy-700">
+            {data.Googleuser.given_name + " " + data.Googleuser.family_name}
+          </h4>
+          <h6 className=" text-sm text-gray-500 leading-3   ">{data.Googleuser.email}</h6>
         </div>
         <div className="mt-6 mb-3 flex gap-14 md:!gap-14">
           <div className="flex flex-col items-center justify-center">

@@ -29,9 +29,9 @@ function App() {
   const dispatch = useDispatch();
 
   return (
-    <div className="min-h-screen w-screen bg-black ">
+    <div className="min-h-screen w-screen bg-black scrollbar-hide ">
       <Navbar />
-      {<div className="">{data.searchshow ? <NativSearch /> : []}</div>}
+      {<div className="md:hidden">{data.searchshow ? <NativSearch /> : []}</div>}
       <div
         className={` flex flex-row pt-16 max-sm:pt-20  ${
           data.video & data.side ? "space-x-6" : "space-x-0"
@@ -39,7 +39,7 @@ function App() {
       >
         {loginshow ? <Login /> : []}
         <div
-          className={` min-h-screen max-sm:top-[90%] max-sm:py-2  fixed  bg-black  ${
+          className={` min-h-screen max-sm:top-[90%] scrollbar-hide max-sm:py-2  fixed  bg-black  ${
             data.side ? "" : "hidden"
           } ${data.video ? "" : " fixed  bg-black  "} `}
         >
@@ -50,7 +50,7 @@ function App() {
             <Sidebar />
           </motion.aside>
         </div>
-        <div className="overflow-hidden  ">
+        <div className="overflow-hidden scrollbar-hide">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
