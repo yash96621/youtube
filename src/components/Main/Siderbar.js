@@ -6,8 +6,12 @@ import SubscriptionsSharpIcon from "@mui/icons-material/SubscriptionsSharp";
 import { Link } from "react-router-dom";
 import { FiUpload } from "react-icons/fi";
 import { RiVideoAddFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 function Siderbar() {
+  const data = useSelector((state) => {
+    return state.data;
+  });
   return (
     <>
       <div className=" flex flex-col max-sm:w-screen  max-sm:flex-row gap-y-10 cursor-pointer  select-none  ">
@@ -24,6 +28,7 @@ function Siderbar() {
             Subscriptions
           </label>
         </Link>
+
         <Link to="/library" className="flex flex-col mx-auto cursor-pointer">
           <VideoLibraryRoundedIcon className="text-white  mx-auto" sx={{ fontSize: 30 }} />
           <label htmlFor="Library" className="text-white text-xs">
@@ -31,12 +36,21 @@ function Siderbar() {
           </label>
         </Link>
 
-        <Link to="/uploads" className="flex flex-col mx-auto cursor-pointer">
-          <FiUpload className="text-white  mx-auto text-3xl" />
-          <label htmlFor="Uploads" className="text-white text-xs">
-            Uploads
-          </label>
-        </Link>
+        {data.isconnected ? (
+          <Link to="/uploads" className="flex flex-col mx-auto cursor-pointer">
+            <FiUpload className="text-white  mx-auto text-3xl" />
+            <label htmlFor="Uploads" className="text-white text-xs">
+              Uploads
+            </label>
+          </Link>
+        ) : (
+          <div onClick={() => {}} className="flex flex-col mx-auto cursor-pointer">
+            <FiUpload className="text-white  mx-auto text-3xl" />
+            <label htmlFor="Uploads" className="text-white text-xs">
+              Uploads
+            </label>
+          </div>
+        )}
 
         <Link to="/addvideo" className="flex flex-col mx-auto cursor-pointer">
           <RiVideoAddFill className="text-white mx-auto text-3xl" />
