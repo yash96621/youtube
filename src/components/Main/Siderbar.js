@@ -6,9 +6,12 @@ import SubscriptionsSharpIcon from "@mui/icons-material/SubscriptionsSharp";
 import { Link } from "react-router-dom";
 import { FiUpload } from "react-icons/fi";
 import { RiVideoAddFill } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setloginshow } from "../../state/slices/data";
+import { hide, setIsSearch, setbellicon } from "../../state/slices/slice";
 
 function Siderbar() {
+  const dispatch = useDispatch();
   const data = useSelector((state) => {
     return state.data;
   });
@@ -44,7 +47,15 @@ function Siderbar() {
             </label>
           </Link>
         ) : (
-          <div onClick={() => {}} className="flex flex-col mx-auto cursor-pointer">
+          <div
+            onClick={() => {
+              dispatch(setloginshow(true));
+              dispatch(hide(false));
+              dispatch(setIsSearch(false));
+              dispatch(setbellicon(false));
+            }}
+            className="flex flex-col mx-auto cursor-pointer"
+          >
             <FiUpload className="text-white  mx-auto text-3xl" />
             <label htmlFor="Uploads" className="text-white text-xs">
               Uploads

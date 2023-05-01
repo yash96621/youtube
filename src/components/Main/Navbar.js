@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { hide, setsearchshow } from "../../state/slices/slice";
+import { hide, setIsSearch, setsearchshow, setbellicon } from "../../state/slices/slice";
 import { HiMenu, HiOutlineSearch } from "react-icons/hi";
 import { BsBell, BsYoutube } from "react-icons/bs";
 import SearchSuggestion from "./SearchSuggestion";
@@ -24,23 +24,20 @@ function Navbar() {
     }
   }, []);
 
-  const [IsSearch, setIsSearch] = useState(false);
-
-  const [bellicon, setbellicon] = useState(false);
   const [search, setsearch] = useState("");
 
   const changes = (e) => {
     setsearch(e.target.value);
     if (e.target.value === "") {
-      setIsSearch(false);
+      dispatch(setIsSearch(false));
     } else {
-      setIsSearch(true);
-      setbellicon(false);
+      dispatch(setIsSearch(true));
+      dispatch(setbellicon(false));
       dispatch(setdashboard(false));
     }
   };
   const dispatch = useDispatch();
-  const { side, searchshow } = useSelector((state) => {
+  const { side, searchshow, IsSearch, bellicon } = useSelector((state) => {
     return state.slice;
   });
   const { isconnected, Googleuser, dashshow } = useSelector((state) => {
@@ -100,7 +97,7 @@ function Navbar() {
               onClick={() => {
                 dispatch(setsearchshow(true));
                 dispatch(setdashboard(false));
-                setbellicon(false);
+                dispatch(setbellicon(!bellicon));
               }}
               className="text-white  max-md:text-2xl text-5xl hover:cursor-pointer  "
             />
@@ -111,8 +108,8 @@ function Navbar() {
               <div
                 className=" relative cursor-pointer select-none"
                 onClick={() => {
-                  setbellicon(!bellicon);
-                  setIsSearch(false);
+                  dispatch(setbellicon(!bellicon));
+                  dispatch(setIsSearch(false));
                   dispatch(setdashboard(false));
                 }}
               >
@@ -125,8 +122,8 @@ function Navbar() {
               <div
                 onClick={() => {
                   dispatch(setdashboard(!dashshow));
-                  setbellicon(false);
-                  setIsSearch(false);
+                  dispatch(setbellicon(false));
+                  dispatch(setIsSearch(false));
                 }}
                 className=" cursor-pointer"
               >
@@ -138,8 +135,8 @@ function Navbar() {
               onClick={() => {
                 dispatch(setloginshow(true));
                 dispatch(hide(false));
-                setbellicon(false);
-                setIsSearch(false);
+                dispatch(setIsSearch(false));
+                dispatch(setbellicon(false));
               }}
               className="text-4xl text-blue-500 hover:cursor-pointer "
             />

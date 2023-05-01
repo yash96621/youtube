@@ -6,6 +6,8 @@ const slice = createSlice({
     side: false,
     video: true,
     searchshow: false,
+    bellicon: false,
+    IsSearch: false,
   },
   reducers: {
     hide: (state, actions) => {
@@ -17,8 +19,14 @@ const slice = createSlice({
     setsearchshow: (state, { payload }) => {
       state.searchshow = payload;
     },
+    setIsSearch: (state, actions) => {
+      state.IsSearch = actions.payload;
+    },
+    setbellicon: (state, { payload }) => {
+      state.bellicon = payload;
+    },
   },
 });
 
-export const { hide, vid, setsearchshow } = slice.actions;
+export const { hide, vid, setsearchshow, setIsSearch, setbellicon } = slice.actions;
 export default slice.reducer;
