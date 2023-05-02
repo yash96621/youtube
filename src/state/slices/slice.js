@@ -8,6 +8,7 @@ const slice = createSlice({
     searchshow: false,
     bellicon: false,
     IsSearch: false,
+    SearchText: "",
   },
   reducers: {
     hide: (state, actions) => {
@@ -24,6 +25,9 @@ const slice = createSlice({
     },
     setbellicon: (state, { payload }) => {
       state.bellicon = payload;
+    },
+    setSearchText: (state, { payload }) => {
+      state.SearchText = payload;
     },
   },
 });

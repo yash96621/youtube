@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 function Upload() {
   const fileRef = useRef(null);
   const handleVideoUpload = (file) => {
-    if (!file.type.includes("video")) {
+    if (!file.type.includes(".mkv")) {
       alert("not a video and don't submit, just return");
       return;
     } else {
@@ -37,7 +37,7 @@ function Upload() {
             <input
               type="file"
               id="file"
-              accept="video/*"
+              accept=".mkv"
               ref={fileRef}
               className="hidden"
               onChange={(event) => handleVideoUpload(event.target.files[0])}

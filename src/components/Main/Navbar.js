@@ -11,18 +11,14 @@ import { IoMdMic } from "react-icons/io";
 import BellSuggestion from "./BellSuggestion";
 import { setloginshow, setdashboard } from "../../state/slices/data";
 import DashSuggestion from "./DashSuggestion";
-import { LoginWithGoogle } from "../../state/thunk/TubeThunk";
-import NativSearch from "./NativSearch";
-import { Link } from "react-router-dom";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 function Navbar() {
+  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
   useEffect(() => {
-    if (sessionStorage.getItem("googleuser")) {
-      const token = sessionStorage.getItem("googleuser");
-      console.log(token);
-      dispatch(LoginWithGoogle({ token }));
-    }
-  }, []);
+    setsearch(transcript);
+  }, [transcript]);
 
   const [search, setsearch] = useState("");
 
@@ -37,7 +33,7 @@ function Navbar() {
     }
   };
   const dispatch = useDispatch();
-  const { side, searchshow, IsSearch, bellicon } = useSelector((state) => {
+  const { side, IsSearch, bellicon } = useSelector((state) => {
     return state.slice;
   });
   const { isconnected, Googleuser, dashshow } = useSelector((state) => {
@@ -49,6 +45,21 @@ function Navbar() {
       dispatch(hide(false));
     } else {
       dispatch(hide(true));
+    }
+  };
+
+  const VoiceSearch = () => {
+    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+      alert("Browser Not Supported");
+    } else {
+      if (listening) {
+        SpeechRecognition.stopListening();
+      } else {
+        SpeechRecognition.startListening({
+          continuous: false,
+          language: "en-GB",
+        });
+      }
     }
   };
 
@@ -73,21 +84,23 @@ function Navbar() {
             <input
               type="search"
               name="search"
-              placeholder="search"
+              placeholder={`${listening ? "Listening" : "Search"}`}
               value={search}
               onChange={changes}
               className=" bg-black rounded-l-full text-white w-[550px] max-lg:w-[300px] "
             ></input>
           </div>
-          <div className="bg-slate-900 rounded-r-full p-1.5 px-3">
-            <SearchIcon
-              sx={{ fontSize: 30 }}
-              className="text-white mx-auto hover:cursor-pointer  "
-            />
+          <div className="bg-slate-800 cursor-pointer rounded-r-full p-1.5 px-3">
+            <SearchIcon sx={{ fontSize: 30 }} className="text-white mx-auto   " />
           </div>
 
-          <div className="bg bg-slate-800 rounded-full ml-2  p-2">
-            <IoMdMic sx={{ fontSize: 30 }} className="text-white cursor-pointer text-2xl"></IoMdMic>
+          <div
+            onClick={VoiceSearch}
+            className={` cursor-pointer ${
+              listening ? "text-red-600 animate-pulse " : "text-white"
+            }  bg-slate-800 rounded-full ml-2  p-2`}
+          >
+            <IoMdMic sx={{ fontSize: 30 }} className=" text-2xl"></IoMdMic>
           </div>
         </div>
 
@@ -97,7 +110,7 @@ function Navbar() {
               onClick={() => {
                 dispatch(setsearchshow(true));
                 dispatch(setdashboard(false));
-                dispatch(setbellicon(!bellicon));
+                dispatch(setbellicon(false));
               }}
               className="text-white  max-md:text-2xl text-5xl hover:cursor-pointer  "
             />

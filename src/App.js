@@ -16,8 +16,16 @@ import Subscription from "./pages/Subscription";
 import Uploads from "./pages/Uploads";
 import ModePage from "./components/Library/ModePage";
 import NativSearch from "./components/Main/NativSearch";
+import { LoginWithGoogle } from "./state/thunk/TubeThunk";
 
 function App() {
+  useEffect(() => {
+    if (sessionStorage.getItem("googleuser")) {
+      const token = sessionStorage.getItem("googleuser");
+      console.log(token);
+      dispatch(LoginWithGoogle({ token }));
+    }
+  }, []);
   const data = useSelector((state) => {
     return state.slice;
   });

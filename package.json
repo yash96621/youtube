@@ -45,6 +45,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
     "react-simple-oauth2-login": "^0.5.4",
+    "react-speech-recognition": "^3.10.0",
     "react-thanos-glove": "^0.0.7",
     "react-thanos-snap-effect": "^0.0.4",
     "react-turn-to-dust": "^1.0.8",

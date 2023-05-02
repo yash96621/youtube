@@ -38,12 +38,22 @@ function Siderbar() {
             Library
           </label>
         </Link>
-
-        {data.isconnected ? (
+        {data.user && data.user.uploads ? (
           <Link to="/uploads" className="flex flex-col mx-auto cursor-pointer">
             <FiUpload className="text-white  mx-auto text-3xl" />
             <label htmlFor="Uploads" className="text-white text-xs">
               Uploads
+            </label>
+          </Link>
+        ) : (
+          []
+        )}
+
+        {data && data.isconnected ? (
+          <Link to="/addvideo" className="flex flex-col mx-auto cursor-pointer">
+            <RiVideoAddFill className="text-white mx-auto text-3xl" />
+            <label htmlFor="Library" className="text-white text-xs">
+              Add Video
             </label>
           </Link>
         ) : (
@@ -56,19 +66,12 @@ function Siderbar() {
             }}
             className="flex flex-col mx-auto cursor-pointer"
           >
-            <FiUpload className="text-white  mx-auto text-3xl" />
-            <label htmlFor="Uploads" className="text-white text-xs">
-              Uploads
+            <RiVideoAddFill className="text-white  mx-auto text-3xl" />
+            <label htmlFor="Library" className="text-white text-xs">
+              Add Video
             </label>
           </div>
         )}
-
-        <Link to="/addvideo" className="flex flex-col mx-auto cursor-pointer">
-          <RiVideoAddFill className="text-white mx-auto text-3xl" />
-          <label htmlFor="Library" className="text-white text-xs">
-            Add Video
-          </label>
-        </Link>
       </div>
     </>
   );
